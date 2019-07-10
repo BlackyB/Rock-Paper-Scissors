@@ -1,0 +1,350 @@
+/*Init*/
+
+html{
+	font-size: 100%;
+}
+@font-face {
+	font-family: 'Early GameBoy';
+	src: url('../fonts/Early-GameBoy.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+	background: url('../img/bg.jpg') center center;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	font-family: 'Early GameBoy';
+}
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, img{
+	margin: 0;
+	padding: 0;
+}
+a, ul, li {
+	text-decoration: none;
+	list-style: none;
+}
+img{
+	object-fit: contain;
+}
+.box{
+	box-sizing: border-box;
+}
+
+/* Classes Maison */
+
+.none{
+	display: none;
+}
+.row{
+	display: flex;
+	flex-direction: row;
+}
+.col{
+	display: flex;
+	flex-direction: column;
+}
+.wrap{
+	flex-wrap: wrap;
+}
+.sticky{
+	position: sticky;
+}
+.txt-center{
+	text-align: center;
+}
+.txt-left{
+	text-align: left
+}
+.txt-right{
+	text-align: right;
+}
+.txt-justify{
+	text-align: justify;
+}
+.justify-center{
+	justify-content: center;
+}
+.justify-around{
+	justify-content: space-around;
+}
+.justify-between{
+	justify-content: space-between;
+}
+.justify-start{
+	justify-content: flex-start;
+}
+.justify-end{
+	justify-content: flex-end;
+}
+.align-center{
+	align-items: center;
+}
+.align-left{
+	align-items: flex-start;
+}
+.align-right{
+	align-items: flex-end;
+}
+.w-10{
+	width: 10%;
+}
+.w-25{
+	width: 25%;
+}
+.w-33{
+	width: 33%;
+}
+.w-50{
+	width: 50%;
+}
+.w-75{
+	width: 75%;
+}
+.w-100{
+	width: 100%;
+}
+.m-auto{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Margin/Padding */
+
+.m-Top-10{
+	margin-top: 10px;
+}
+.m-Top-15{
+	margin-top: 15px;
+}
+.m-Top-20{
+	margin-top: 20px;
+}
+.m-Bot-10{
+	margin-bottom: 10px;
+}
+.m-Bot-20{
+	margin-bottom: 20px;
+}
+.p-10{
+	padding: 10px;
+}
+.p-Top-20{
+	padding-top: 20px;
+}
+.p-Top-60{
+	padding-top: 60px;
+}
+.p-Bot-20{
+	padding-bottom: 20px;
+}
+.full-H{
+	min-height: 100vh;
+}
+
+
+/* Couleurs */
+
+.opacity{
+	opacity: 0;
+}
+
+/* Fonts */
+.bold{
+	font-weight: bold;
+}
+
+/* Autre */
+.border-radius-outside{
+	border-radius: 20px;	
+}
+.spacer{
+	height: 50px;
+}
+.gameboy{
+	width: 400px;
+	height: auto;
+	background-color: rgb(204, 201, 201);
+-moz-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
+-webkit-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
+-o-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
+box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
+
+}
+#reflet{
+	position: absolute;
+	width: 340px;
+	height: 260px;
+	background: radial-gradient(
+		circle farthest-side at 0 0, 
+		rgba(255,255,255,0) 90%,
+		rgba(255,255,255,.8) 98%,
+		rgba(255,255,255,0) 100%
+		) no-repeat;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 50px;
+}
+.button{
+	border-radius: 25px;
+	border-width: 1.5px;
+	color: red;
+	background-color: rgba(255, 215, 0, 0.7);
+	border-color: transparent;
+	margin: 5px 0;
+}
+.button:hover{
+	border-color: red;
+	background-color: rgba(255, 215, 0, 1)
+}
+.color-Grey{
+	background-color: rgb(204, 201, 201);
+}
+.color-Black{
+	background-color: rgb(50, 50, 50);
+}
+.black{
+	color: rgb(10, 10, 10);
+}
+.color-Dark-Grey{
+	background-color: rgb(112, 112, 112);
+}
+#screen{
+	width: 220px;
+	height: 220px;
+	background-color: #9B9F4E; 
+}
+.displayScreen{
+	padding: 5px 0;
+}
+.displayActive{
+	font-size: 1.1rem;
+	background-color : rgb(10, 10, 10);
+	color : #9B9F4E;
+}
+#contourScreen{
+	width: 340px;
+	height: 260px;
+	border: 0px solid transparent;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 50px;
+	background-color: rgb(112, 112, 112);
+}
+#redLight{
+	height: 8px;
+	width: 8px;
+	margin-left: 10px;
+	border-radius: 50%;
+	background-color: red;
+	box-shadow: 0 0 6px 2px red;
+	z-index: 50;
+}
+.small{
+	color: #FFFFFF;
+	font-size: 0.4rem;
+}
+.borderScreen{
+	width: 50px;
+	height: 50px;
+}
+.barreH{
+	width: 400px;
+	height: 25px;
+	border-top-left-radius : 10px;
+	border-top-right-radius : 10px;
+}
+.liner{
+	width: 400px;
+	height: 2px;
+}
+.barreLat{
+	width: 30px;
+	height: 260px;
+}
+.croix{
+	width: 90px;
+	height: 120px;
+}
+.fill{
+	width: 80px;
+	height: 120px;
+}
+.square{
+	width: 30px;
+	height: 30px;
+}
+.boutons{
+	width: 180px;
+	height: 120px;
+}
+.containerBouton{
+	height: 120px;
+	width: 90px;
+}
+.fillerBouton{
+	width: 90px;
+	height: 50px;
+}
+.boutonsRouge{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: rgb(234, 0, 175);
+}
+.boutonsRouge p{
+	margin-top: 55px;
+	margin-left: 50px;
+}
+.barreLatBot{
+	width: 50px;
+	height: 120px
+}
+.barreLatFoot{
+	width: 133px;
+	height: 160px
+}
+.boutonsSelSta{
+	width: 50px;
+	height: 8px;
+	border-radius: 10px;
+	font-size: 0.6rem;
+}
+.boutonsSelSta p{
+	margin-top: 10px;
+}
+#barreDeSon{
+	position: relative;
+	top: 35px;
+	right: 5px;
+}
+.sonBarre{
+	width: 60px;
+	height: 4px;
+	border-radius: 10px;
+}
+.fillerBot{
+	height: 170px;
+	width: 90px;
+}
+.shine-left{
+	border-left-width: 2px;
+	border-left-style: solid;
+	border-left-color: rgb(237, 237, 237);
+}
+.shine-top{
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: rgb(237, 237, 237);
+}
+.radius-cross{
+	border-radius: 2px;
+}
+.angle-Bot-R{
+	border-bottom-right-radius: 120px;
+}
