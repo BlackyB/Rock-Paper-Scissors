@@ -232,9 +232,11 @@ let playing = () => {
 	if (inputUser == "PLAYER VS AI" || mod == "PVE"){
 		mod = "PVE";
 		audio_Music.pause();
+		audio_Music.currentTime = 0;
 	} else if (inputUser == "AI VS AI"  || inputUser == "" || mod == "AI") {
 		mod = "AI";
 		audio_Music.pause();
+		audio_Music.currentTime = 0;
 		choice();
 	} else if (inputUser == "EXIT") {
 		reset();
