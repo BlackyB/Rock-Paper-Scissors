@@ -184,6 +184,7 @@ let playing = () => {
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
+	displayTop.innerHTML = compteurUser + " - " + compteurComputer;
 	display1.innerHTML = "<p>ROCK</p>";
 	display2.innerHTML = "<p>PAPER</p>";
 	display3.innerHTML = "<p>SCISSORS</p>";
@@ -202,6 +203,7 @@ let show = () => {
 	// 	inputUser = "SHOWPVE";
 	// }
 	inputUser = "SHOW";
+	displayTop.innerHTML = compteurUser + " - " + compteurComputer;
 	display1.innerHTML = playerName + ' - ' + compteurUser;
 	display2.innerHTML = "";
 	display3.innerHTML = "AI - " + compteurComputer;
