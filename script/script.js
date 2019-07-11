@@ -7,16 +7,20 @@ let right = document.getElementById('arrow-Right');
 let down = document.getElementById('arrow-Down');
 
 let screen = document.getElementById('screen');
+let displayCenter = document.getElementById('displayCenter');
 let displays = document.getElementsByClassName('displayScreen');
+let displayTop = document.getElementById('displayTop');
 let display1 = document.getElementById('display1');
 let display2 = document.getElementById('display2');
 let display3 = document.getElementById('display3');
+let displayBot = document.getElementById('displayBot');
 let active;
+let currentActive = 1;
 let mod;
 let compteurUser = 0;
 let compteurComputer = 0;
-let inputUser;
-let inputComputer;
+let inputUser = "";
+let inputComputer = "";
 let winScore = 3;
 let result= '';
 
@@ -29,11 +33,10 @@ let audio_Hit = new Audio('../sounds/hit.wav');
 let audio_Defeat = new Audio('../sounds/defeat.wav');
 let audio_Victory = new Audio('../sounds/victory.wav');
 
-/* Move Arrow Up and Arrow Down */
 
-let moveUp2 = () => {
-	audio_Navigate.play();
-	inputUser = '';
+
+let getActive = () => {
+
 	active = document.getElementsByClassName('displayActive');
 	for (var i = 0; i < active.length; i++) {
 		let current = active[i].id;
@@ -42,41 +45,21 @@ let moveUp2 = () => {
 			displays[i].classList.remove('displayActive');
 		}
 		switch(current) {
+			case 1 :
+			display1.classList.add('displayActive');
+			inputUser = display1.innerText;
+			break;
 			case 2:
-			display3.classList.add('displayActive');
-			inputUser = display3.innerText;	
+			display2.classList.add('displayActive');
+			inputUser = display2.innerText;	
 			break;
 			case 3:
-			display2.classList.add('displayActive');
-			inputUser = display2.innerText;
+			display3.classList.add('displayActive');
+			inputUser = display3.innerText;
 			break;
 		}
 	}
 }
-
-let moveDown2 = () => {
-	audio_Navigate.play();
-	inputUser = '';
-	active = document.getElementsByClassName('displayActive');
-	for (var i = 0; i < active.length; i++) {
-		let current = active[i].id;
-		current = parseInt(current.slice(-1));
-		for (var i = 0; i < displays.length; i++) {
-			displays[i].classList.remove('displayActive');
-		}
-		switch(current) {
-			case 2:
-			display3.classList.add('displayActive');
-			inputUser = display3.innerText;	
-			break;
-			case 3:
-			display2.classList.add('displayActive');
-			inputUser = display2.innerText;
-			break;
-		}
-	}
-}
-
 let moveUp3 = () => {
 	audio_Navigate.play();
 	inputUser = '';
@@ -106,7 +89,6 @@ let moveUp3 = () => {
 
 let moveDown3 = () => {
 	audio_Navigate.play();
-	inputUser = '';
 	active = document.getElementsByClassName('displayActive');
 	for (var i = 0; i < active.length; i++) {
 		let current = active[i].id;
@@ -136,7 +118,7 @@ let moveDown3 = () => {
 let home = () => {
 	display1.innerHTML = "ULTIMATE";
 	display1.style.fontSize = "0.8rem";
-	display2.innerHTML = "ROCK PAPER SCISSORS";
+	display2.innerHTML = "MINI GAMES";
 	display2.style.fontSize = "1.2rem";
 	display3.innerHTML = "TOURNAMENT";
 	display3.style.fontSize = "0.8rem";
@@ -148,63 +130,47 @@ let home = () => {
 	display2.style.backgroundColor = "#9B9F4E";
 	display2.style.color = "rgb(10, 10, 10)";
 	display3.style.color = "#9B9F4E";
-	buttonA.addEventListener('click', reset);
-	buttonA.removeEventListener('click', menu);
-	buttonB.addEventListener('click', reset);
-	buttonB.removeEventListener('click', home);
 }
 
 /* First Menu */
 
-let reset = () => {
+let title = () => {
+	inputUser = '';
+	getActive();
 	audio_Enter.play();
 	clean();
-	mod = '';
-	display2.innerHTML = "PLAY";
-	display3.innerHTML = "EXIT";
+	display1.innerHTML = "MYSTERY NUMBER";
+	display2.innerHTML = "ROCK PAPER SCISSORS";
+	display3.innerHTML = "421";
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
 	display2.classList.add('displayActive');
-	up.addEventListener('click', moveUp2);
-	down.addEventListener('click', moveDown2);
-	up.removeEventListener('click', moveUp3);
-	down.removeEventListener('click', moveDown3);
-	buttonA.removeEventListener('click', reset);
-	buttonA.removeEventListener('click', playing);
-	buttonA.addEventListener('click', menu);
-	buttonB.removeEventListener('click', reset);
-	buttonB.addEventListener('click', home);
 }
+
+
+
+
+/****************************** ROCK PAPER SCISSORS *********************************/
+
 
 /* Mod Selection Menu */
 
-let menu = () => {
+let menuRPS = () => {
 	audio_Enter.play();
+	getActive();
 	clean();
 	active = document.getElementsByClassName('displayActive');
-	up.removeEventListener('click', moveUp2);
-	down.removeEventListener('click', moveDown2);
-	up.addEventListener('click', moveUp3);
-	down.addEventListener('click', moveDown3);
-	buttonA.removeEventListener('click', menu);
-	buttonA.addEventListener('click', playing);
-	buttonB.removeEventListener('click', menu);
-	buttonB.removeEventListener('click', home);
-	buttonB.addEventListener('click', reset);
 	display1.innerHTML = "PLAYER VS AI";
 	display2.innerHTML = "AI VS AI";
 	display3.innerHTML = "EXIT";
 	for (var i = 0; i < active.length; i++) {
-			inputUser = active[i].innerText;
-		}
+		inputUser = active[i].innerText;
+	}
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
 	display2.classList.add('displayActive');
-	if (inputUser == "EXIT") {
-		home();
-	}
 	inputUser = '';
 }
 
@@ -214,41 +180,27 @@ let playing = () => {
 	clean();
 	audio_Battle.play();
 	audio_Enter.play();
-	up.addEventListener('click', moveUp3);
-	down.addEventListener('click', moveDown3);
-	for (var i = 0; i < Boutons.length; i++) {
-		Boutons[i].removeEventListener('mousedown', playing);
-	}
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
-	buttonA.addEventListener('click', choice);
-	display1.innerHTML = "<p>Rock</p>";
-	display2.innerHTML = "<p>Paper</p>";
-	display3.innerHTML = "<p>Scissors</p>";
+	display1.innerHTML = "<p>ROCK</p>";
+	display2.innerHTML = "<p>PAPER</p>";
+	display3.innerHTML = "<p>SCISSORS</p>";
 	display1.classList.add('displayActive');
-	buttonB.removeEventListener('click', reset);
-	buttonA.removeEventListener('click', playing);
-	if (inputUser == "PLAYER VS AI" || mod == "PVE"){
-		mod = "PVE";
-		audio_Music.pause();
-		audio_Music.currentTime = 0;
-	} else if (inputUser == "AI VS AI"  || inputUser == "" || mod == "AI") {
-		mod = "AI";
-		audio_Music.pause();
-		audio_Music.currentTime = 0;
-		choice();
-	} else if (inputUser == "EXIT") {
-		reset();
-	}
+	getActive();
 }
 
 /* Result Display */
 
 let show = () => {
 	clean();
-	buttonA.removeEventListener('click', show);
-	buttonA.addEventListener('click', playing);
+	// if (mod = "AI VS AI") {
+	// 	inputUser = "SHOWAI";
+	// }
+	// if (mod = "PLAYER VS AI") {
+	// 	inputUser = "SHOWPVE";
+	// }
+	inputUser = "SHOW";
 	display1.innerHTML = playerName + ' - ' + compteurUser;
 	display2.innerHTML = "";
 	display3.innerHTML = "AI - " + compteurComputer;
@@ -261,22 +213,20 @@ let show = () => {
 /* Duel resolve */
 
 var choice = function() {
-	buttonA.removeEventListener('click', choice);
-	active = document.getElementsByClassName('displayActive');
 	playerName = "Player";
 	coeffUser = '';
-	if (mod == "AI") {
+	if (mod == "AI VS AI") {
 		coeffUser = Math.floor((Math.random() * 3)) + 1;
 		playerName = "Player Auto";
 		switch(coeffUser) {
 			case 1 :
-			inputUser = "Rock";
+			inputUser = "ROCK";
 			break;
 			case 2 :
-			inputUser = "Paper";
+			inputUser = "PAPER";
 			break;
 			case 3 :
-			inputUser = "Scissors";
+			inputUser = "SCISSORS";
 			break;
 		}
 	} else {
@@ -287,74 +237,74 @@ var choice = function() {
 	coeff = Math.floor((Math.random() * 3)) + 1;
 	switch(coeff) {
 		case 1 :
-		inputComputer = "Rock";
+		inputComputer = "ROCK";
 		break;
 		case 2 :
-		inputComputer = "Paper";
+		inputComputer = "PAPER";
 		break;
 		case 3 :
-		inputComputer = "Scissors";
+		inputComputer = "SCISSORS";
 		break;
 	}
 	switch(inputUser) {
 
-		case 'Rock' :
+		case 'ROCK' :
 
-		if (inputComputer == "Rock") {
+		if (inputComputer == "ROCK") {
 			result = 'Draw, try again !';
 		}
-		if (inputComputer == "Paper") {
+		if (inputComputer == "PAPER") {
 			result = 'Computer scores !';
 			compteurComputer++;
 		}
-		if (inputComputer == "Scissors") {
+		if (inputComputer == "SCISSORS") {
 			result = playerName + ' scores !';
 			compteurUser++;
 		}
 		break;
 
-		case 'Paper' :
+		case 'PAPER' :
 
-		if (inputComputer == "Rock") {
+		if (inputComputer == "ROCK") {
 			result = playerName + ' scores !';
 			compteurUser++;
 		}
-		if (inputComputer == "Paper") {
+		if (inputComputer == "PAPER") {
 			result = 'Draw, try again !';
 		}
-		if (inputComputer == "Scissors") {
+		if (inputComputer == "SCISSORS") {
 			result = 'Computer scores !';
 			compteurComputer++;
 		}
 		break;
 
-		case 'Scissors':
+		case 'SCISSORS':
 
-		if (inputComputer == "Rock") {
+		if (inputComputer == "ROCK") {
 			result = 'Computer scores !';
 			compteurComputer++;
 		}
-		if (inputComputer == "Paper") {
+		if (inputComputer == "PAPER") {
 			result = playerName + ' score !';
 			compteurUser++;
 		}
-		if (inputComputer == "Scissors") {
+		if (inputComputer == "SCISSORS") {
 			result = 'Draw, try again !';
 		}
 		break;
 
 	}
-	up.removeEventListener('click', moveUp3);
-	down.removeEventListener('click', moveDown3);
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
 	audio_Hit.play();
 	display2.classList.add('displayActive');
+	displayTop.innerHTML = compteurUser + " - " + compteurComputer;
 	display1.innerHTML = playerName + ' ' + inputUser;
 	display2.innerHTML = result;
 	display3.innerHTML = 'AI ' + inputComputer;
-	buttonA.addEventListener('click', show);
+
+	inputUser = "ROUND";
 
 	/* Victory Condition */
 
@@ -377,11 +327,10 @@ var choice = function() {
 		display1.innerHTML = scorePlayer;
 		display2.innerHTML = result;
 		display3.innerHTML = scoreOrdinateur;
-		buttonA.removeEventListener('click', show);
 		audio_Battle.pause();
 		audio_Battle.currentTime = 0;
 		audio_Music.play();
-		buttonA.addEventListener('click', menu);
+		inputUser = "ROCK PAPER SCISSORS";
 	}
 
 	/* Defeat Condition */
@@ -405,14 +354,485 @@ var choice = function() {
 		display1.innerHTML = scorePlayer;
 		display2.innerHTML = result;
 		display3.innerHTML = scoreOrdinateur;
-		buttonA.removeEventListener('click', show);
 		audio_Battle.pause();
 		audio_Battle.currentTime = 0;
 		audio_Music.play();
-		buttonA.addEventListener('click', menu);
+		inputUser = "ROCK PAPER SCISSORS";
 	}
 }
 
+
+/****************************** MYSTERY NUMBER **************************************/
+let target;
+let replace;
+let userSubmission = '';
+let tempFail = 0;
+let affichageFail = '';
+let maxFail = 8;
+let temp1;
+let temp2;
+let temp3;
+let generateRandom = () =>{
+	let max = 1000; 
+	target = Math.trunc(Math.random()*Math.floor(max));
+}
+const guessNumber = () =>{
+	userSubmission = display1.innerText + display2.innerText + display3.innerText;
+	clean();
+	affichageFail = '';
+	for (var i = 0; i < tempFail + 1; i++) {
+		affichageFail += "X ";
+	}
+	displayTop.innerHTML = affichageFail;
+	for (var i = 0; i < displays.length; i++) {
+		displays[i].classList.remove('displayActive');
+	}
+	if (userSubmission < target) {
+		displayCenter.classList.remove('row');
+		displayCenter.classList.add('col');
+		display2.innerHTML = "Too low !"
+		tempFail++;
+		inputUser = "NEXTGUESS";
+	} else if (userSubmission > target) {
+		displayCenter.classList.remove('row');
+		displayCenter.classList.add('col');
+		display2.innerHTML = "Too high !"
+		tempFail++;
+		inputUser = "NEXTGUESS";
+	} else {
+		displayCenter.classList.remove('row');
+		displayCenter.classList.add('col');
+		display3.style.backgroundColor = "rgb(10, 10, 10)";
+		display3.style.color = "#9B9F4E";
+		display1.innerHTML = "Well done";
+		display2.innerHTML = "Mystery number was"
+		display3.innerHTML = target;
+		inputUser = "";
+	}
+	if (tempFail == maxFail) {
+		displayCenter.classList.remove('row');
+		displayCenter.classList.add('col');
+		display3.style.backgroundColor = "rgb(10, 10, 10)";
+		display3.style.color = "#9B9F4E";
+		display1.innerHTML = "GAME OVER";
+		display2.innerHTML = "Mystery number was"
+		display3.innerHTML = target;
+		inputUser = "";
+	}
+}
+
+const nextGuess = () =>{
+	console.log(target);
+	console.log(temp1);
+	clean();
+	displayCenter.classList.remove('col');
+	displayCenter.classList.add('row');
+	displayTop.innerHTML = affichageFail;
+	display1.innerText = temp1;
+	display2.innerText = temp2;
+	display3.innerText = temp3;
+	for (var i = 0; i < displays.length; i++) {
+		displays[i].classList.remove('displayActive');
+	}
+	displays[currentActive].classList.add('displayActive');
+	audio_Hit.play();
+	inputUser = "GUESS";
+	up.addEventListener('click', moveUp421);
+	down.addEventListener('click', moveDown421);
+}
+
+let moveUp421 = () => {
+	replace = '';
+	audio_Navigate.play();
+	active = document.getElementsByClassName('displayActive');
+
+	for (var i = 0; i < active.length; i++) {
+		let current = active[i].id;
+		current = parseInt(current.slice(-1));
+		switch(current) {
+			case 1:
+			replace = parseInt(display1.innerText)+1;
+			if (replace > 9) {
+				replace = 0;
+			}
+			display1.innerText = replace;	
+			break;
+			case 2:
+			replace = parseInt(display2.innerText)+1;
+			if (replace > 9) {
+				replace = 0;
+			}
+			display2.innerText = replace;	
+			break;
+			case 3:
+			replace = parseInt(display3.innerText)+1;
+			if (replace > 9) {
+				replace = 0;
+			}
+			display3.innerText = replace;
+			break;
+		}
+		inputUser = "GUESS"
+		temp1 = display1.innerText;
+		temp2 = display2.innerText;
+		temp3 = display3.innerText;
+		userSubmission = display1.innerText + display2.innerText + display3.innerText;
+	}
+
+}
+let moveDown421 = () => {
+	replace ='';
+	audio_Navigate.play();
+	active = document.getElementsByClassName('displayActive');
+
+	for (var i = 0; i < active.length; i++) {
+		let current = active[i].id;
+		current = parseInt(current.slice(-1));
+		switch(current) {
+			case 1:
+			replace = parseInt(display1.innerText)-1;
+			if (replace < 0) {
+				replace = 9;
+			}
+			display1.innerText = replace;	
+			break;
+			case 2:
+			replace = parseInt(display2.innerText)-1;
+			if (replace < 0) {
+				replace = 9;
+			}
+			display2.innerText = replace;	
+			break;
+			case 3:
+			replace = parseInt(display3.innerText)-1;
+			if (replace < 0) {
+				replace = 9;
+			}
+			display3.innerText = replace;
+			break;
+		}
+		inputUser = "GUESS"
+		temp1 = display1.innerText;
+		temp2 = display2.innerText;
+		temp3 = display3.innerText;
+		userSubmission = display1.innerText + display2.innerText + display3.innerText;
+	}
+}
+
+let moveRightMystery = () => {
+	audio_Navigate.play();
+	active = document.getElementsByClassName('displayActive');
+	for (var i = 0; i < active.length; i++) {
+		let current = active[i].id;
+		current = parseInt(current.slice(-1));
+		for (var i = 0; i < displays.length; i++) {
+			displays[i].classList.remove('displayActive');
+		}
+		switch(current) {
+			case 1 :
+			display2.classList.add('displayActive');
+			currentActive = 2;
+			break;
+
+			case 2:
+			display3.classList.add('displayActive');
+			currentActive = 3;
+			break;
+
+			case 3:
+			display1.classList.add('displayActive');
+			currentActive = 1;
+			break;
+		}
+	}
+	inputUser = "GUESS"
+}
+let moveLeftMystery = () => {
+	audio_Navigate.play();
+	active = document.getElementsByClassName('displayActive');
+	for (var i = 0; i < active.length; i++) {
+		let current = active[i].id;
+		current = parseInt(current.slice(-1));
+		for (var i = 0; i < displays.length; i++) {
+			displays[i].classList.remove('displayActive');
+		}
+		switch(current) {
+			case 1 :
+			display3.classList.add('displayActive');
+			currentActive = 3;
+			break;
+			
+			case 2:
+			display1.classList.add('displayActive');
+			currentActive = 1;
+			break;
+
+			case 3:
+			display2.classList.add('displayActive');
+			currentActive = 2;
+			break;
+		}
+	}
+	inputUser = "GUESS"
+}
+
+let initMystery = () => {
+	clean();
+	tempFail = ''
+	temp1 = "0";
+	temp2 = "0";
+	temp3 = "0";
+	displayCenter.classList.remove('col');
+	displayCenter.classList.add('row');
+	display1.innerText = "0";
+	display2.innerText = "0";
+	display3.innerText = "0";
+	for (var i = 0; i < displays.length; i++) {
+		displays[i].classList.remove('displayActive');
+	}
+	audio_Hit.play();
+	display1.classList.add('displayActive');
+	up.removeEventListener('click', moveUp3);
+	down.removeEventListener('click', moveDown3);
+	right.addEventListener('click', moveRightMystery);
+	left.addEventListener('click', moveLeftMystery);
+	generateRandom();
+	inputUser = "GUESS";
+	up.addEventListener('click', moveUp421);
+	down.addEventListener('click', moveDown421);
+	userSubmission = display1.innerText + display2.innerText + display3.innerText;
+}
+
+
+/****************************** 421 *********************************/
+
+
+
+// let init421 = () => {
+// 	let dice = [];
+// 	let stockage = [];
+// 	let roll = 3;
+// 	let nbDice = 3;
+// 	let show = document.getElementById('resultat');
+// 	let stock = document.getElementById('desStock');
+// 	let nbLances = document.getElementById('lancers');
+// 	screen.classList.remove('col');
+// 	screen.classList.add('row');
+// 	display1.innerText = "0";
+// 	display2.innerText = "0";
+// 	display3.innerText = "0";
+// 	for (var i = 0; i < displays.length; i++) {
+// 		displays[i].classList.remove('displayActive');
+// 	}
+// 	audio_Hit.play();
+// 	display1.classList.add('displayActive');
+// 	up.removeEventListener('click', moveUp3);
+// 	down.removeEventListener('click', moveDown3);
+// 	right.addEventListener('click', moveDown3);
+// 	left.addEventListener('click', moveUp3);
+
+// 	let replace;
+
+// 	let moveUp421 = () => {
+// 		replace ='';
+// 		audio_Navigate.play();
+// 		active = document.getElementsByClassName('displayActive');
+
+// 		for (var i = 0; i < active.length; i++) {
+// 			let current = active[i].id;
+// 			current = parseInt(current.slice(-1));
+// 			switch(current) {
+// 				case 1:
+// 				replace = parseInt(display1.innerText)+1;
+// 				if (replace > 9) {
+// 					replace = 0;
+// 				}
+// 				display1.innerText = replace;	
+// 				break;
+// 				case 2:
+// 				replace = parseInt(display2.innerText)+1;
+// 				if (replace > 9) {
+// 					replace = 0;
+// 				}
+// 				display2.innerText = replace;	
+// 				break;
+// 				case 3:
+// 				replace = parseInt(display3.innerText)+1;
+// 				if (replace > 9) {
+// 					replace = 0;
+// 				}
+// 				display3.innerText = replace;
+// 				break;
+// 			}
+// 			inputUser = display1.innerText + display2.innerText + display3.innerText;
+// 		}
+
+// 	}
+// 	let moveDown421 = () => {
+// 		replace ='';
+// 		audio_Navigate.play();
+// 		active = document.getElementsByClassName('displayActive');
+
+// 		for (var i = 0; i < active.length; i++) {
+// 			let current = active[i].id;
+// 			current = parseInt(current.slice(-1));
+// 			switch(current) {
+// 				case 1:
+// 				replace = parseInt(display1.innerText)-1;
+// 				if (replace < 0) {
+// 					replace = 9;
+// 				}
+// 				display1.innerText = replace;	
+// 				break;
+// 				case 2:
+// 				replace = parseInt(display2.innerText)-1;
+// 				if (replace < 0) {
+// 					replace = 9;
+// 				}
+// 				display2.innerText = replace;	
+// 				break;
+// 				case 3:
+// 				replace = parseInt(display3.innerText)-1;
+// 				if (replace < 0) {
+// 					replace = 9;
+// 				}
+// 				display3.innerText = replace;
+// 				break;
+// 			}
+// 			inputUser = display1.innerText + display2.innerText + display3.innerText;
+// 		}
+// 	}
+
+// 	up.addEventListener('click', moveUp421);
+// 	down.addEventListener('click', moveDown421);
+
+// }
+
+// let lancer = () => {
+// 	dice = [];
+// 	if (roll !== 0) {
+// 		for (let i = 0; i < nbDice; i++) {
+// 			dice[i] = Math.floor((Math.random()*6)+1);
+// 		}
+// 		for (let ibis = 0; ibis < dice.length; ibis++) {
+// 			if (dice[ibis] == 1 && stockage.includes(1) == false){
+// 				stockage.push(dice[ibis]);
+// 				nbDice --;
+// 			}	
+// 			if (dice[ibis] == 2 && stockage.includes(2) == false){
+// 				stockage.push(dice[ibis]);
+// 				nbDice --;
+// 			}
+// 			if (dice[ibis] == 4 && stockage.includes(4) == false){
+// 				stockage.push(dice[ibis]);
+// 				nbDice --;
+// 			}
+// 		}
+// 		show.innerHTML = dice.join(". ");
+// 		stock.innerHTML = stockage;
+// 		roll --;
+// 		nbLances.innerHTML = "Il vous reste " + roll + " lancés.";
+// 	} 
+// 	else {
+// 		alert('Vous avez déja effectué 3 lancés. Redémarrage de la partie');
+// 		resetAll();
+// 	}
+// 	if (nbDice == 0){
+// 		alert('Vous avez gagné !');
+// 	}
+// }
+// let resetAll = () =>{
+// 	dice = [];
+// 	stockage = [];
+// 	roll = 3;
+// 	nbDice = 3;
+// 	nbLances.innerHTML = "Il vous reste " + roll + " lancés.";
+// 	show.innerHTML = "Affichage du lancé en cours";
+// 	stock.innerHTML = "Dès mis de coté";
+// }
+
+
+
+
+/*************************************** INIT DE LA PAGE **********************/
+
+
+/* Move Arrow Up and Arrow Down */
+let beforePreviousPage;
+let previousPage;
+
+let pressA = () => {
+	console.log(inputUser);
+	switch(inputUser) {
+		case "" :
+		title();
+		getActive();
+		break;
+
+		case "MYSTERY NUMBER":
+		initMystery();
+		break;
+
+		case "ROCK PAPER SCISSORS":
+		menuRPS();
+		getActive();
+		break;
+
+		case "421":
+		init421();
+		getActive();
+		break;
+
+		case "AI VS AI":
+		mod = "AI VS AI";
+		choice();
+		break;
+
+		case "PLAYER VS AI":
+		mod = "PLAYER VS AI";
+		playing();
+		break;
+
+		case "ROCK":
+		choice();
+		break;
+
+		case "PAPER":
+		choice();
+		break;
+
+		case "SCISSORS":
+		choice();
+		break;
+
+		case "ROUND":
+		show();
+		break;
+
+		case "SHOW":
+		inputUser = mod;
+		buttonA.click();
+		break;
+
+		case "GUESS":
+		guessNumber();
+		break;
+
+		case "NEXTGUESS":
+		nextGuess();
+		break;
+
+		case "EXIT":
+		inputUser = "";
+		buttonA.click();
+		break;
+	}
+}
+
+// let pressB = () => {
+// 	inputUser = "";
+// 	buttonA.click();
+// }
 
 /* Buttons press and release animations */
 
@@ -445,13 +865,22 @@ for (var i = 0; i < Boutons.length; i++) {
 
 let clean = () => {
 	screen.style.backgroundColor = "";
+	displayTop.style.backgroundColr = "";
+	display1.style.backgroundColor = "";
 	display2.style.backgroundColor = "";
+	display3.style.backgroundColor = "";
+	displayBot.style.backgroundColor = "";
+	displayTop.style.fontSize = "";
 	display1.style.fontSize = "";
 	display2.style.fontSize = "";
 	display3.style.fontSize = "";
+	displayBot.style.fontSize = "";
+	displayTop.style.color = "";
 	display1.style.color = "";
 	display2.style.color = "";
 	display3.style.color = "";
+	displayBot.style.color = "";
+	displayTop.innerHTML = "";
 	display1.innerHTML = "";
 	display2.innerHTML = "";
 	display3.innerHTML = "";
@@ -467,27 +896,30 @@ right.addEventListener('mousedown', pushArrow);
 right.addEventListener('mouseup', releaseArrow);
 down.addEventListener('mousedown', pushArrow);
 down.addEventListener('mouseup', releaseArrow);
-
+buttonA.addEventListener('click', pressA);
+// buttonB.addEventListener('click', pressB);
+up.addEventListener('click', moveUp3);
+down.addEventListener('click', moveDown3);
 /* Keyboard Listener */
 
-document.addEventListener("keyup", function(event) {
-	event.preventDefault();
-	if (event.keyCode === 38) {
-		up.click();
-	}
-	if (event.keyCode === 37) {
-		buttonB.click();
-	}
-	if (event.keyCode === 39) {
-		buttonA.click();
-	}
-	if (event.keyCode === 40) {
-		down.click();
-	}
-	if (event.keyCode === 13) {
-		buttonA.click();
-	}
-});
+// document.addEventListener("keyup", function(event) {
+// 	event.preventDefault();
+// 	// if (event.keyCode === 38) {
+// 	// 	up.click();
+// 	// }
+// 	// if (event.keyCode === 37) {
+// 	// 	buttonB.click();
+// 	// }
+// 	// if (event.keyCode === 39) {
+// 	// 	buttonA.click();
+// 	// }
+// 	// if (event.keyCode === 40) {
+// 	// 	down.click();
+// 	// }
+// 	if (event.keyCode === 13) {
+// 		init421();
+// 	}
+// });
 
 /* Static gameboy element positioning */
 
@@ -503,6 +935,9 @@ for (var i = 0; i < rotateRed.length; i++) {
 
 let son = document.getElementById('barreDeSon');
 son.style.transform = "rotate(50deg)";
+
+
+
 
 
 /* Init the game */

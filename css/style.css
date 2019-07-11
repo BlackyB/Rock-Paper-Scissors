@@ -168,11 +168,15 @@ img{
 	width: 400px;
 	height: auto;
 	background-color: rgb(204, 201, 201);
--moz-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
 -webkit-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
--o-box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
 box-shadow: 25px 25px 25px 15px rgba(52, 52, 52, 0.5);
 
+}
+
+#displayBot, #displayTop{
+	background-color: rgb(10, 10, 10);
+	color: #9B9F4E;
+	height: 15px;
 }
 #reflet{
 	position: absolute;

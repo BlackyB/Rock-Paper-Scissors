@@ -13,10 +13,17 @@
 				<div id="redLight"></div>
 				<p class="small m-Top-10">BATTERY</p>
 			</div>
-			<div id="screen" class="col justify-center align-center">
-				<p id="display1" class="displayScreen w-100 bold txt-center black"></p>
-				<p id="display2" class="displayScreen w-100 bold txt-center black"></p>
-				<p id="display3" class="displayScreen w-100 bold txt-center black"></p>
+			<div id="screen" class="col justify-between align-center">
+				<p id="displayTop" class="displayScreen w-100 bold row justify-center align-center txt-center"></p>
+				<div id="displayCenter" class="w-100">
+					<p id="display1" class="displayScreen w-100 bold txt-center black"></p>
+					<p id="display2" class="displayScreen w-100 bold txt-center black"></p>
+					<p id="display3" class="displayScreen w-100 bold txt-center black"></p>
+				</div>
+				<div id="displayBot" class="displayScreen w-100 txt-center row justify-around align-center small">
+					<p>B: Back</p>
+					<p>A: Enter</p>
+				</div>
 			</div>
 			<div class="borderScreen"></div>
 		</div>
