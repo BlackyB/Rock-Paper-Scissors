@@ -25,6 +25,7 @@ let winScore = 3;
 let result= '';
 
 let audio_Battle = new Audio('../sounds/battle.wav');
+let audio_musicMystery = new Audio('../sounds/musicMystery.mp3');
 let audio_Music = new Audio('../sounds/music.mp3');
 let audio_Enter = new Audio('../sounds/enter.wav');
 let audio_Back = new Audio('../sounds/back.wav');
@@ -137,7 +138,6 @@ let home = () => {
 let title = () => {
 	inputUser = '';
 	getActive();
-	audio_Enter.play();
 	clean();
 	display1.innerHTML = "MYSTERY NUMBER";
 	display2.innerHTML = "ROCK PAPER SCISSORS";
@@ -157,7 +157,6 @@ let title = () => {
 /* Mod Selection Menu */
 
 let menuRPS = () => {
-	audio_Enter.play();
 	getActive();
 	clean();
 	active = document.getElementsByClassName('displayActive');
@@ -178,8 +177,8 @@ let menuRPS = () => {
 
 let playing = () => {
 	clean();
+	audio_Music.pause()
 	audio_Battle.play();
-	audio_Enter.play();
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
@@ -329,6 +328,8 @@ var choice = function() {
 		display3.innerHTML = scoreOrdinateur;
 		audio_Battle.pause();
 		audio_Battle.currentTime = 0;
+		audio_musicMystery.pause();
+		audio_musicMystery.currentTime = 0;
 		audio_Music.play();
 		inputUser = "ROCK PAPER SCISSORS";
 	}
@@ -391,12 +392,14 @@ const guessNumber = () =>{
 		displayCenter.classList.remove('row');
 		displayCenter.classList.add('col');
 		display2.innerHTML = "Too low !"
+		audio_Hit.play();
 		tempFail++;
 		inputUser = "NEXTGUESS";
 	} else if (userSubmission > target) {
 		displayCenter.classList.remove('row');
 		displayCenter.classList.add('col');
 		display2.innerHTML = "Too high !"
+		audio_Hit.play();
 		tempFail++;
 		inputUser = "NEXTGUESS";
 	} else {
@@ -405,8 +408,16 @@ const guessNumber = () =>{
 		display3.style.backgroundColor = "rgb(10, 10, 10)";
 		display3.style.color = "#9B9F4E";
 		display1.innerHTML = "Well done";
+		audio_Victory.play();
+		audio_Music.play()
+		audio_musicMystery.pause();
+		audio_musicMystery.currentTime = 0;
 		display2.innerHTML = "Mystery number was"
 		display3.innerHTML = target;
+		up.removeEventListener('click', moveUp421);
+		down.removeEventListener('click', moveDown421);
+		up.addEventListener('click', moveUp3);
+		down.addEventListener('click', moveDown3);
 		inputUser = "";
 	}
 	if (tempFail == maxFail) {
@@ -415,8 +426,16 @@ const guessNumber = () =>{
 		display3.style.backgroundColor = "rgb(10, 10, 10)";
 		display3.style.color = "#9B9F4E";
 		display1.innerHTML = "GAME OVER";
+		audio_Defeat.play();
+		audio_Music.play()
+		audio_musicMystery.pause();
+		audio_musicMystery.currentTime = 0;
 		display2.innerHTML = "Mystery number was"
 		display3.innerHTML = target;
+		up.removeEventListener('click', moveUp421);
+		down.removeEventListener('click', moveDown421);
+		up.addEventListener('click', moveUp3);
+		down.addEventListener('click', moveDown3);
 		inputUser = "";
 	}
 }
@@ -577,6 +596,8 @@ let moveLeftMystery = () => {
 }
 
 let initMystery = () => {
+	audio_Music.pause()
+	audio_musicMystery.play();
 	clean();
 	tempFail = ''
 	temp1 = "0";
@@ -762,6 +783,7 @@ let beforePreviousPage;
 let previousPage;
 
 let pressA = () => {
+	audio_Enter.play();
 	console.log(inputUser);
 	switch(inputUser) {
 		case "" :
@@ -785,6 +807,8 @@ let pressA = () => {
 
 		case "AI VS AI":
 		mod = "AI VS AI";
+		audio_Music.pause()
+		audio_Battle.play();
 		choice();
 		break;
 
