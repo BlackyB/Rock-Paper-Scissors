@@ -441,8 +441,6 @@ const guessNumber = () =>{
 }
 
 const nextGuess = () =>{
-	console.log(target);
-	console.log(temp1);
 	clean();
 	displayCenter.classList.remove('col');
 	displayCenter.classList.add('row');
@@ -784,7 +782,6 @@ let previousPage;
 
 let pressA = () => {
 	audio_Enter.play();
-	console.log(inputUser);
 	switch(inputUser) {
 		case "" :
 		title();
