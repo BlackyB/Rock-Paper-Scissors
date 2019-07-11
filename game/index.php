@@ -70,8 +70,8 @@
 	<div class="row justify-center">
 		<div class="barreLatFoot"></div>
 		<div class="box barreLatFoot row justify-around align-start p-Top-60">
-			<div class="boutonsSelSta color-Dark-Grey"><p>SELECT</p></div>
-			<div class="boutonsSelSta color-Dark-Grey"><p>START</p></div>
+			<div id="select" class="boutonsSelSta color-Dark-Grey"><p>SELECT</p></div>
+			<div id="buttonStart" class="boutonsSelSta color-Dark-Grey"><p>START</p></div>
 		</div>
 		<div id="barreDeSon" class="barreLatFoot angle-Bot-R col align-start">
 			<div class="sonBarre color-Dark-Grey m-Top-15"></div>

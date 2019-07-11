@@ -5,6 +5,8 @@ let up = document.getElementById('arrow-Up');
 let left = document.getElementById('arrow-Left');
 let right = document.getElementById('arrow-Right');
 let down = document.getElementById('arrow-Down');
+let buttonSelect = document.getElementById('select');
+let buttonStart = document.getElementById('buttonStart');
 
 let screen = document.getElementById('screen');
 let displayCenter = document.getElementById('displayCenter');
@@ -850,11 +852,52 @@ let pressA = () => {
 	}
 }
 
-// let pressB = () => {
-// 	inputUser = "";
-// 	buttonA.click();
-// }
+let pressB = () => {
+	audio_Back.play();
+}
 
+let pressSelect = () =>{
+	if (audio_Music.volume == 1) {
+
+		audio_Battle.volume = 0;
+		audio_Defeat.volume = 0;
+		audio_Enter.volume = 0;
+		audio_Hit.volume = 0;
+		audio_Music.volume = 0;
+		audio_Navigate.volume = 0;
+		audio_Victory.volume = 0;
+		audio_musicMystery.volume = 0;
+		audio_Back.volume = 0;
+	} else {
+		audio_Battle.volume = 1;
+		audio_Defeat.volume = 1;
+		audio_Enter.volume = 1;
+		audio_Hit.volume = 1;
+		audio_Music.volume = 1;
+		audio_Navigate.volume = 1;
+		audio_Victory.volume = 1;
+		audio_musicMystery.volume = 1;
+		audio_Back.volume = 1;
+	}
+}
+
+let pressStart = () =>{
+	clean();
+	home();
+	displayCenter.classList.remove('row');
+	displayCenter.classList.add('col');
+	inputUser = '';
+	audio_Battle.pause();
+	audio_Battle.currentTime = 0;
+	audio_musicMystery.pause();
+	audio_musicMystery.currentTime = 0;
+	audio_Music.play();
+	up.removeEventListener('click', moveUp421);
+	down.removeEventListener('click', moveDown421);
+	up.addEventListener('click', moveUp3);
+	down.addEventListener('click', moveDown3);
+
+}
 /* Buttons press and release animations */
 
 var push = function() {
@@ -918,7 +961,9 @@ right.addEventListener('mouseup', releaseArrow);
 down.addEventListener('mousedown', pushArrow);
 down.addEventListener('mouseup', releaseArrow);
 buttonA.addEventListener('click', pressA);
-// buttonB.addEventListener('click', pressB);
+buttonB.addEventListener('click', pressB);
+buttonSelect.addEventListener('click', pressSelect);
+buttonStart.addEventListener('click', pressStart);
 up.addEventListener('click', moveUp3);
 down.addEventListener('click', moveDown3);
 /* Keyboard Listener */
@@ -965,4 +1010,12 @@ son.style.transform = "rotate(50deg)";
 
 home();
 audio_Music.play();
-
+audio_Battle.volume = 1;
+audio_Defeat.volume = 1;
+audio_Enter.volume = 1;
+audio_Hit.volume = 1;
+audio_Music.volume = 1;
+audio_Navigate.volume = 1;
+audio_Victory.volume = 1;
+audio_musicMystery.volume = 1;
+audio_Back.volume = 1;
