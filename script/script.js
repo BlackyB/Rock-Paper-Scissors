@@ -638,12 +638,12 @@ let initMystery = () => {
 let timer;
 let countTimer;
 let countdownThrow;
+let throwMin = 1;
+let throwMax = 5;
 
 let initPotatoe = () => {
 	countTimer = 0;
 	countdownThrow = 0;
-	let throwMin = 1;
-	let throwMax = 5;
 	let min = 5;
 	let max = 30;
 	console.log(timer);
