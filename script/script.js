@@ -656,12 +656,17 @@ let initPotatoe = () => {
 	display1.style.backgroundColor = "rgb(10, 10, 10)";
 	display3.style.backgroundColor = "rgb(10, 10, 10)";
 	inputUser = "PASS IT";
+	start();
 }
 
 let countdown = () => {
 	countTimer++;
 	console.log(countTimer);
-	displayTop.innerHTML = "00:" + countTimer;
+	if (countTimer < 10) {
+		displayTop.innerHTML = "00:0" + countTimer;
+	} else {
+		displayTop.innerHTML = "00:" + countTimer;
+	}
 	if (countTimer == timer) {
 		display2.innerHTML = "BOOM"
 	}
@@ -672,7 +677,6 @@ let start = () => {
 }
 
 let computerPassIt = () => {
-	start();
 	throwBomb();
 	display2.innerHTML = "CATCH IT";
 }
