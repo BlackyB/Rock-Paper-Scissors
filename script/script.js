@@ -639,7 +639,7 @@ let timer;
 let initPotatoe = () =>{
 	let min = 7;
 	let max = 35;
-	timer = Math.random() * ((max - min) + 1) + min;
+	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
 
 }
 
