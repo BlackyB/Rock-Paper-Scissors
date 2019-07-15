@@ -638,6 +638,7 @@ let initMystery = () => {
 let timer;
 let countTimer;
 let countdownThrow;
+let computerTimer;
 let throwMin = 1;
 let throwMax = 5;
 
