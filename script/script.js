@@ -651,7 +651,7 @@ let initPotatoe = () => {
 	clean();
 	up.removeEventListener('click', moveUp3);
 	down.removeEventListener('click', moveDown3);
-	displayTop.innerHTML = "30:00";
+	displayTop.innerHTML = "00:00";
 	display2.innerHTML = "PASS IT";
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
@@ -734,15 +734,6 @@ let pressA = () => {
 		getActive();
 		break;
 
-		case "HOT POTATOE":
-		initPotatoe();
-		getActive();
-		break;
-
-		case "PASS IT":
-		computerPassIt();
-		break;
-
 		case "AI VS AI":
 		mod = "AI VS AI";
 		audio_Music.pause()
@@ -783,6 +774,16 @@ let pressA = () => {
 		inputUser = mod;
 		up.addEventListener('click', moveUp3);
 		down.addEventListener('click', moveDown3);
+		buttonA.click();
+		break;
+
+		case "HOT POTATOE":
+		initPotatoe();
+		getActive();
+		break;
+
+		case "PASS IT":
+		computerPassIt();
 		buttonA.click();
 		break;
 
