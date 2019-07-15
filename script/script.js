@@ -683,6 +683,9 @@ let start = () => {
 
 let timerComputer = () => {
 	countdownThrow++;
+	if (countdownThrow == computerTimer) {
+		throwBomb();
+	}
 }
 
 let timerComputerIncrement = () => {
@@ -694,12 +697,11 @@ let computerPassIt = () => {
 	display2.innerHTML = "CATCH IT";
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
 	console.log(computerTimer);
-	if (countdownThrow == computerTimer) {
-		throwBomb();
-	}
 }
 
 let throwBomb = () => {
+	clearInterval(timerComputerIncrement);
+	computerPassIt();
 	display2.innerHTML = "PASS IT";
 }
 
