@@ -659,6 +659,7 @@ let initPotatoe = () => {
 
 let countdown = () => {
 	countTimer++;
+	console.log(countTimer);
 	display2.innerHTML = countTimer;
 	if (countTimer == timer) {
 		display2.innerHTML = "BOOM"
@@ -709,7 +710,7 @@ let pressA = () => {
 		break;
 
 		case "PASS IT":
-
+		computerPassIt();
 		break;
 
 		case "AI VS AI":
