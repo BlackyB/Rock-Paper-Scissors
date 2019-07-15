@@ -684,12 +684,16 @@ let countdown = () => {
 		}
 		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
-		clearInterval(start);
+		clearStart;
 	}
 }
 
-var start = function() {
+let start = () => {
 	setInterval(countdown, 1000);
+}
+
+let clearStart = () => {
+	clearInterval(start);
 }
 
 let timerComputer = () => {
@@ -700,8 +704,12 @@ let timerComputer = () => {
 	}
 }
 
-var timerComputerIncrement = function() {
+let timerComputerIncrement = () => {
 	setInterval(timerComputer, 1000);
+}
+
+let clearTimerComputerIncrement = () => {
+	clearInterval(timerComputerIncrement);
 }
 
 let computerPassIt = () => {
@@ -715,7 +723,7 @@ let computerPassIt = () => {
 }
 
 let throwBomb = () => {
-	clearInterval(timerComputerIncrement);
+	clearTimerComputerIncrement;
 	activeBomb = "PLAYER";
 	inputUser = "PASS IT";
 	display2.innerHTML = "PASS IT";
