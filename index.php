@@ -5,7 +5,7 @@
 		<p class="bold">Do you wanna play a game ?</p>
 	</header>
 	<section class="col align-center w-10 m-auto">
-		<a href="/game" id="nGame" class="button w-100 bold" type="submit" name="new-Game" value="NEW GAME"></a>
+		<a href="/game"><div id="nGame" class="button w-100 bold" >NEW GAME</div></a>
 	</section>
 </main>
 
