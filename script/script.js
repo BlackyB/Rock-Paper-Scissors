@@ -734,6 +734,7 @@ let previousPage;
 
 let pressA = () => {
 	audio_Enter.play();
+	clean();
 	switch(inputUser) {
 		case "" :
 		title();
