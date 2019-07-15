@@ -636,7 +636,8 @@ let initMystery = () => {
 
 /****************************** HOT POTATOE *********************************/
 let timer;
-let initPotatoe = () =>{
+let initPotatoe = () => {
+	let countTimer = 0;
 	let min = 5;
 	let max = 30;
 	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
@@ -653,6 +654,23 @@ let initPotatoe = () =>{
 	display2.color = "rgb(10, 10, 10)";
 	display1.style.backgroundColor = "rgb(10, 10, 10)";
 	display3.style.backgroundColor = "rgb(10, 10, 10)";
+	inputUser = "PASS IT";
+}
+
+let countdown = () => {
+	countTimer++;
+	if (countTimer == timer) {
+		display2.innerHTML = "BOOM"
+	}
+}
+
+let start = () => {
+	setInterval(countdown, 1000);
+}
+
+let computerPassIt = () => {
+	start();
+	display2.innerHTML = "PASS IT";
 }
 
 
@@ -687,6 +705,10 @@ let pressA = () => {
 		case "HOT POTATOE":
 		initPotatoe();
 		getActive();
+		break;
+
+		case "PASS IT":
+
 		break;
 
 		case "AI VS AI":
