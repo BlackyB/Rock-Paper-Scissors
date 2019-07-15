@@ -38,7 +38,9 @@ let audio_Navigate = new Audio('../sounds/updown.wav');
 let audio_Hit = new Audio('../sounds/hit.wav');
 let audio_Defeat = new Audio('../sounds/defeat.wav');
 let audio_Victory = new Audio('../sounds/victory.wav');
-
+let audio_Music_HotPotatoe = new Audio('../sounds/musicHotPotatoe.mp3');
+let audio_Switch = new Audio('../sounds/switch.wav');
+let audio_Explosion = new Audio('../sounds/explosion.wav');
 
 
 let getActive = () => {
@@ -645,6 +647,7 @@ let activeBomb;
 let winner;
 
 let initPotatoe = () => {
+	audio_Music_HotPotatoe.play();
 	countTimer = 0;
 	countdownThrow = 0;
 	let min = 5;
@@ -674,6 +677,7 @@ let countdown = () => {
 		displayTop.innerHTML = "00:" + countTimer;
 	}
 	if (countTimer == timer) {
+		audio_Explosion.play();
 		switch(activeBomb) {
 			case "AI":
 				winner = "Player";
@@ -684,6 +688,8 @@ let countdown = () => {
 		}
 		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
+		audio_Music_HotPotatoe.pause();
+		audio_Music_HotPotatoe.currentTime = 0;
 		clearTimerComputerIncrement();
 		clearStart();
 		inputUser = "";
@@ -715,6 +721,7 @@ var clearTimerComputerIncrement = function() {
 }
 
 let computerPassIt = () => {
+	audio_Switch.play();
 	countdownThrow = 0;
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
 	timerComputerIncrement();
@@ -725,6 +732,7 @@ let computerPassIt = () => {
 }
 
 let throwBomb = () => {
+	audio_Switch.play();
 	clearTimerComputerIncrement();
 	activeBomb = "PLAYER";
 	inputUser = "PASS IT";
@@ -746,6 +754,8 @@ let pressA = () => {
 		case "" :
 		title();
 		getActive();
+		up.addEventListener('click', moveUp3);
+		down.addEventListener('click', moveDown3);
 		break;
 
 		case "MYSTERY NUMBER":
@@ -865,6 +875,9 @@ let pressSelect = () =>{
 		audio_Victory.volume = 0;
 		audio_musicMystery.volume = 0;
 		audio_Back.volume = 0;
+		audio_Music_HotPotatoe.volume = 0;
+		audio_Explosion.volume = 0;
+		audio_Switch.volume = 0;
 	} else {
 		audio_Battle.volume = 1;
 		audio_Defeat.volume = 1;
@@ -875,6 +888,9 @@ let pressSelect = () =>{
 		audio_Victory.volume = 1;
 		audio_musicMystery.volume = 1;
 		audio_Back.volume = 1;
+		audio_Music_HotPotatoe.volume = 1;
+		audio_Explosion.volume = 1;
+		audio_Switch.volume = 1;
 	}
 }
 
