@@ -642,7 +642,7 @@ let countTimer;
 let countdownThrow;
 let computerTimer;
 let throwMin = 1;
-let throwMax = 7;
+let throwMax = 3;
 let activeBomb;
 let winner;
 
