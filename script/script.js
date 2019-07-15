@@ -635,11 +635,11 @@ let initMystery = () => {
 
 
 /****************************** HOT POTATOE *********************************/
-
+let timer;
 let initPotatoe = () =>{
 	let min = 7;
 	let max = 35;
-	let timer = Math.random() * ((max - min) + 1) + min;
+	timer = Math.random() * ((max - min) + 1) + min;
 
 }
 
