@@ -27,8 +27,11 @@ let winScore = 3;
 let result= '';
 
 let audio_Battle = new Audio('../sounds/battle.wav');
+audio_Battle.loop = true;
 let audio_musicMystery = new Audio('../sounds/musicMystery.mp3');
+audio_musicMystery.loop = true;
 let audio_Music = new Audio('../sounds/music.mp3');
+audio_Music.loop = true;
 let audio_Enter = new Audio('../sounds/enter.wav');
 let audio_Back = new Audio('../sounds/back.wav');
 let audio_Navigate = new Audio('../sounds/updown.wav');
@@ -823,14 +826,20 @@ let pressA = () => {
 		break;
 
 		case "ROCK":
+		up.removeEventListener('click', moveUp3);
+		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
 		case "PAPER":
+		up.removeEventListener('click', moveUp3);
+		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
 		case "SCISSORS":
+		up.removeEventListener('click', moveUp3);
+		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
@@ -840,6 +849,8 @@ let pressA = () => {
 
 		case "SHOW":
 		inputUser = mod;
+		up.addEventListener('click', moveUp3);
+		down.addEventListener('click', moveDown3);
 		buttonA.click();
 		break;
 
@@ -860,6 +871,24 @@ let pressA = () => {
 
 let pressB = () => {
 	audio_Back.play();
+	// switch(inputUser) {
+	// 	case "": 
+	// 	title();
+	// 	break;
+
+	// 	case "AI VS AI":
+	// 	mod = "";
+	// 	audio_Music.pause()
+	// 	audio_Battle.play();
+	// 	menuRPS();
+	// 	break;
+
+	// 	case "PLAYER VS AI":
+	// 	mod = "";
+	// 	audio_Music.pause()
+	// 	audio_Battle.play();
+	// 	menuRPS();
+	// 	break;
 }
 
 let pressSelect = () =>{
