@@ -661,7 +661,7 @@ let initPotatoe = () => {
 let countdown = () => {
 	countTimer++;
 	console.log(countTimer);
-	display2.innerHTML = countTimer;
+	displayTop.innerHTML = "00:" + countTimer;
 	if (countTimer == timer) {
 		display2.innerHTML = "BOOM"
 	}
@@ -673,6 +673,11 @@ let start = () => {
 
 let computerPassIt = () => {
 	start();
+	throwBomb();
+	display2.innerHTML = "CATCH IT";
+}
+
+let throwBomb = () => {
 	display2.innerHTML = "PASS IT";
 }
 
