@@ -694,6 +694,7 @@ let start = () => {
 
 let timerComputer = () => {
 	countdownThrow++;
+	console.log(countdownThrow);
 	if (countdownThrow == computerTimer) {
 		throwBomb();
 	}
@@ -706,7 +707,6 @@ let timerComputerIncrement = () => {
 let computerPassIt = () => {
 	countdownThrow = 0;
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
-	console.log(countdownThrow);
 	console.log(computerTimer);
 	timerComputerIncrement();
 	activeBomb = "AI";
