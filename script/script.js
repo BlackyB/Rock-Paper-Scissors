@@ -684,7 +684,6 @@ let countdown = () => {
 		}
 		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
-		inputUser = "";
 		clearInterval(start);
 	}
 }
@@ -706,7 +705,8 @@ let timerComputerIncrement = () => {
 
 let computerPassIt = () => {
 	countdownThrow = 0;
-	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
+	computerTimer = 10;
+	// computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
 	timerComputerIncrement();
 	activeBomb = "AI";
 	inputUser = "CATCH IT";
@@ -734,7 +734,6 @@ let previousPage;
 
 let pressA = () => {
 	audio_Enter.play();
-	clean();
 	switch(inputUser) {
 		case "" :
 		title();
