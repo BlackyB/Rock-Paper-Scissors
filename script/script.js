@@ -659,6 +659,7 @@ let initPotatoe = () => {
 
 let countdown = () => {
 	countTimer++;
+	display2.innerHTML = countTimer;
 	if (countTimer == timer) {
 		display2.innerHTML = "BOOM"
 	}
