@@ -684,7 +684,7 @@ let countdown = () => {
 				winner = "AI";
 				break;
 		}
-		display1.innerHTML = winnner + " wins !";
+		display1.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
 		clearInterval(start);
 	}
