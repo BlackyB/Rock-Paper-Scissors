@@ -146,7 +146,7 @@ let title = () => {
 	clean();
 	display1.innerHTML = "MYSTERY NUMBER";
 	display2.innerHTML = "ROCK PAPER SCISSORS";
-	display3.innerHTML = "421";
+	display3.innerHTML = "HOT POTATOE";
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
@@ -634,152 +634,13 @@ let initMystery = () => {
 }
 
 
-/****************************** 421 *********************************/
+/****************************** HOT POTATOE *********************************/
 
-
-
-// let init421 = () => {
-// 	let dice = [];
-// 	let stockage = [];
-// 	let roll = 3;
-// 	let nbDice = 3;
-// 	let show = document.getElementById('resultat');
-// 	let stock = document.getElementById('desStock');
-// 	let nbLances = document.getElementById('lancers');
-// 	screen.classList.remove('col');
-// 	screen.classList.add('row');
-// 	display1.innerText = "0";
-// 	display2.innerText = "0";
-// 	display3.innerText = "0";
-// 	for (var i = 0; i < displays.length; i++) {
-// 		displays[i].classList.remove('displayActive');
-// 	}
-// 	audio_Hit.play();
-// 	display1.classList.add('displayActive');
-// 	up.removeEventListener('click', moveUp3);
-// 	down.removeEventListener('click', moveDown3);
-// 	right.addEventListener('click', moveDown3);
-// 	left.addEventListener('click', moveUp3);
-
-// 	let replace;
-
-// 	let moveUp421 = () => {
-// 		replace ='';
-// 		audio_Navigate.play();
-// 		active = document.getElementsByClassName('displayActive');
-
-// 		for (var i = 0; i < active.length; i++) {
-// 			let current = active[i].id;
-// 			current = parseInt(current.slice(-1));
-// 			switch(current) {
-// 				case 1:
-// 				replace = parseInt(display1.innerText)+1;
-// 				if (replace > 9) {
-// 					replace = 0;
-// 				}
-// 				display1.innerText = replace;	
-// 				break;
-// 				case 2:
-// 				replace = parseInt(display2.innerText)+1;
-// 				if (replace > 9) {
-// 					replace = 0;
-// 				}
-// 				display2.innerText = replace;	
-// 				break;
-// 				case 3:
-// 				replace = parseInt(display3.innerText)+1;
-// 				if (replace > 9) {
-// 					replace = 0;
-// 				}
-// 				display3.innerText = replace;
-// 				break;
-// 			}
-// 			inputUser = display1.innerText + display2.innerText + display3.innerText;
-// 		}
-
-// 	}
-// 	let moveDown421 = () => {
-// 		replace ='';
-// 		audio_Navigate.play();
-// 		active = document.getElementsByClassName('displayActive');
-
-// 		for (var i = 0; i < active.length; i++) {
-// 			let current = active[i].id;
-// 			current = parseInt(current.slice(-1));
-// 			switch(current) {
-// 				case 1:
-// 				replace = parseInt(display1.innerText)-1;
-// 				if (replace < 0) {
-// 					replace = 9;
-// 				}
-// 				display1.innerText = replace;	
-// 				break;
-// 				case 2:
-// 				replace = parseInt(display2.innerText)-1;
-// 				if (replace < 0) {
-// 					replace = 9;
-// 				}
-// 				display2.innerText = replace;	
-// 				break;
-// 				case 3:
-// 				replace = parseInt(display3.innerText)-1;
-// 				if (replace < 0) {
-// 					replace = 9;
-// 				}
-// 				display3.innerText = replace;
-// 				break;
-// 			}
-// 			inputUser = display1.innerText + display2.innerText + display3.innerText;
-// 		}
-// 	}
-
-// 	up.addEventListener('click', moveUp421);
-// 	down.addEventListener('click', moveDown421);
-
-// }
-
-// let lancer = () => {
-// 	dice = [];
-// 	if (roll !== 0) {
-// 		for (let i = 0; i < nbDice; i++) {
-// 			dice[i] = Math.floor((Math.random()*6)+1);
-// 		}
-// 		for (let ibis = 0; ibis < dice.length; ibis++) {
-// 			if (dice[ibis] == 1 && stockage.includes(1) == false){
-// 				stockage.push(dice[ibis]);
-// 				nbDice --;
-// 			}	
-// 			if (dice[ibis] == 2 && stockage.includes(2) == false){
-// 				stockage.push(dice[ibis]);
-// 				nbDice --;
-// 			}
-// 			if (dice[ibis] == 4 && stockage.includes(4) == false){
-// 				stockage.push(dice[ibis]);
-// 				nbDice --;
-// 			}
-// 		}
-// 		show.innerHTML = dice.join(". ");
-// 		stock.innerHTML = stockage;
-// 		roll --;
-// 		nbLances.innerHTML = "Il vous reste " + roll + " lancés.";
-// 	} 
-// 	else {
-// 		alert('Vous avez déja effectué 3 lancés. Redémarrage de la partie');
-// 		resetAll();
-// 	}
-// 	if (nbDice == 0){
-// 		alert('Vous avez gagné !');
-// 	}
-// }
-// let resetAll = () =>{
-// 	dice = [];
-// 	stockage = [];
-// 	roll = 3;
-// 	nbDice = 3;
-// 	nbLances.innerHTML = "Il vous reste " + roll + " lancés.";
-// 	show.innerHTML = "Affichage du lancé en cours";
-// 	stock.innerHTML = "Dès mis de coté";
-// }
+let initPotatoe = () =>{
+	let min = 7;
+	let max = 35;
+	let timer = MathRandom() * ((max - min) + 1) + min;
+}
 
 
 
@@ -810,8 +671,8 @@ let pressA = () => {
 		getActive();
 		break;
 
-		case "421":
-		init421();
+		case "HOT POTATOE":
+		initPotatoe();
 		getActive();
 		break;
 
