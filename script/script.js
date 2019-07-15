@@ -818,6 +818,8 @@ let pressA = () => {
 		case "AI VS AI":
 		mod = "AI VS AI";
 		audio_Music.pause()
+		up.removeEventListener('click', moveUp3);
+		down.removeEventListener('click', moveDown3);
 		audio_Battle.play();
 		choice();
 		break;
