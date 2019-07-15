@@ -878,10 +878,10 @@ document.addEventListener("keyup", function(event) {
 		up.click();
 	}
 	if (event.keyCode === 37) {
-		buttonB.click();
+		left.click();
 	}
 	if (event.keyCode === 39) {
-		buttonA.click();
+		right.click();
 	}
 	if (event.keyCode === 40) {
 		down.click();
