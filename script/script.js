@@ -641,7 +641,8 @@ let initPotatoe = () =>{
 	let max = 30;
 	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
 	console.log(timer);
-
+	clean();
+	display2.innerHTML = "PASS IT";
 }
 
 
@@ -868,26 +869,27 @@ buttonSelect.addEventListener('click', pressSelect);
 buttonStart.addEventListener('click', pressStart);
 up.addEventListener('click', moveUp3);
 down.addEventListener('click', moveDown3);
+
 /* Keyboard Listener */
 
-// document.addEventListener("keyup", function(event) {
-// 	event.preventDefault();
-// 	// if (event.keyCode === 38) {
-// 	// 	up.click();
-// 	// }
-// 	// if (event.keyCode === 37) {
-// 	// 	buttonB.click();
-// 	// }
-// 	// if (event.keyCode === 39) {
-// 	// 	buttonA.click();
-// 	// }
-// 	// if (event.keyCode === 40) {
-// 	// 	down.click();
-// 	// }
-// 	if (event.keyCode === 13) {
-// 		init421();
-// 	}
-// });
+document.addEventListener("keyup", function(event) {
+	event.preventDefault();
+	if (event.keyCode === 38) {
+		up.click();
+	}
+	if (event.keyCode === 37) {
+		buttonB.click();
+	}
+	if (event.keyCode === 39) {
+		buttonA.click();
+	}
+	if (event.keyCode === 40) {
+		down.click();
+	}
+	if (event.keyCode === 13) {
+		buttonA.click();
+	}
+});
 
 /* Static gameboy element positioning */
 
