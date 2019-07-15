@@ -637,11 +637,15 @@ let initMystery = () => {
 /****************************** HOT POTATOE *********************************/
 let timer;
 let countTimer;
+let countdownThrow;
+
 let initPotatoe = () => {
 	countTimer = 0;
+	countdownThrow = 0;
+	let throwMin = 1;
+	let throwMax = 5;
 	let min = 5;
 	let max = 30;
-	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
 	console.log(timer);
 	clean();
 	up.removeEventListener('click', moveUp3);
@@ -668,7 +672,7 @@ let countdown = () => {
 		displayTop.innerHTML = "00:" + countTimer;
 	}
 	if (countTimer == timer) {
-		display2.innerHTML = "BOOM"
+		display2.innerHTML = "BOOM";
 	}
 }
 
@@ -676,14 +680,23 @@ let start = () => {
 	setInterval(countdown, 1000);
 }
 
+let timerComputer = () => {
+	countdownThrow++;
+}
+
 let computerPassIt = () => {
-	throwBomb();
 	display2.innerHTML = "CATCH IT";
+	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
+	setInterval(timerComputer, 1000);
+	if (countdownThrow == computerTimer) {
+		throwBomb();
+	}
 }
 
 let throwBomb = () => {
 	display2.innerHTML = "PASS IT";
 }
+
 
 
 
