@@ -662,9 +662,8 @@ let initPotatoe = () => {
 	display2.color = "rgb(10, 10, 10)";
 	display1.style.backgroundColor = "rgb(10, 10, 10)";
 	display3.style.backgroundColor = "rgb(10, 10, 10)";
-	inputUser = "PASS IT";
+	inputUser = "FIRST PASS IT";
 	activeBomb = "PLAYER";
-	start();
 }
 
 let countdown = () => {
@@ -707,15 +706,15 @@ let timerComputerIncrement = () => {
 let computerPassIt = () => {
 	timerComputerIncrement();
 	activeBomb = "AI";
+	inputUser = "CATCH IT";
 	display2.innerHTML = "CATCH IT";
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
-	console.log(computerTimer);
 }
 
 let throwBomb = () => {
 	clearInterval(timerComputerIncrement);
 	activeBomb = "PLAYER";
-	computerPassIt();
+	inputUser = "PASS IT";
 	display2.innerHTML = "PASS IT";
 }
 
@@ -797,9 +796,13 @@ let pressA = () => {
 		getActive();
 		break;
 
+		case "FIRST PASS IT":
+		start();
+		computerPassIt();
+		break;
+
 		case "PASS IT":
 		computerPassIt();
-		buttonA.click();
 		break;
 
 		case "GUESS":
