@@ -643,6 +643,10 @@ let initPotatoe = () =>{
 	console.log(timer);
 	clean();
 	display2.innerHTML = "PASS IT";
+	for (var i = 0; i < displays.length; i++) {
+		displays[i].classList.remove('displayActive');
+	}
+	display2.classList.add('displayActive');
 }
 
 
