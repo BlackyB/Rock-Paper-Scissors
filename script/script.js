@@ -647,7 +647,7 @@ let initPotatoe = () => {
 	countdownThrow = 0;
 	let min = 5;
 	let max = 30;
-	console.log(timer);
+	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
 	clean();
 	up.removeEventListener('click', moveUp3);
 	down.removeEventListener('click', moveDown3);
@@ -692,9 +692,8 @@ let timerComputerIncrement = () => {
 let computerPassIt = () => {
 	timerComputerIncrement();
 	display2.innerHTML = "CATCH IT";
-	console.log(computerTimer);
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
-	
+	console.log(computerTimer);
 	if (countdownThrow == computerTimer) {
 		throwBomb();
 	}
