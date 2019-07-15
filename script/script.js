@@ -642,11 +642,18 @@ let initPotatoe = () =>{
 	timer = Math.floor(Math.random() * ((max - min) + 1) + min);
 	console.log(timer);
 	clean();
+	up.removeEventListener('click', moveUp3);
+	down.removeEventListener('click', moveDown3);
+	displayTop.innerHTML = "00:00";
 	display2.innerHTML = "PASS IT";
 	for (var i = 0; i < displays.length; i++) {
 		displays[i].classList.remove('displayActive');
 	}
 	display2.classList.add('displayActive');
+	display2.backgroundColor = "#9B9F4E";
+	display2.color = "rgb(10, 10, 10)";
+	display1.style.backgroundColor = "rgb(10, 10, 10)";
+	display3.style.backgroundColor = "rgb(10, 10, 10)";
 }
 
 
