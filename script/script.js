@@ -669,7 +669,6 @@ let initPotatoe = () => {
 
 let countdown = () => {
 	countTimer++;
-	console.log(countTimer);
 	if (countTimer < 10) {
 		displayTop.innerHTML = "00:0" + countTimer;
 	} else {
@@ -684,7 +683,7 @@ let countdown = () => {
 				winner = "AI";
 				break;
 		}
-		display1.innerHTML = winner + " wins !";
+		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
 		clearInterval(start);
 	}
