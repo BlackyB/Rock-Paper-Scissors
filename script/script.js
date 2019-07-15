@@ -688,7 +688,7 @@ let countdown = () => {
 	}
 }
 
-let start = () => {
+let start = function() {
 	setInterval(countdown, 1000);
 }
 
@@ -700,7 +700,7 @@ let timerComputer = () => {
 	}
 }
 
-let timerComputerIncrement = () => {
+let timerComputerIncrement = function() {
 	setInterval(timerComputer, 1000);
 }
 
