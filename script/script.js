@@ -684,7 +684,7 @@ let countdown = () => {
 		}
 		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
-		clearStart;
+		clearStart();
 	}
 }
 
@@ -723,7 +723,7 @@ let computerPassIt = () => {
 }
 
 let throwBomb = () => {
-	clearTimerComputerIncrement;
+	clearTimerComputerIncrement();
 	activeBomb = "PLAYER";
 	inputUser = "PASS IT";
 	display2.innerHTML = "PASS IT";
