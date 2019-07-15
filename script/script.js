@@ -688,7 +688,7 @@ let countdown = () => {
 	}
 }
 
-let start = function() {
+var start = function() {
 	setInterval(countdown, 1000);
 }
 
@@ -700,14 +700,13 @@ let timerComputer = () => {
 	}
 }
 
-let timerComputerIncrement = function() {
+var timerComputerIncrement = function() {
 	setInterval(timerComputer, 1000);
 }
 
 let computerPassIt = () => {
 	countdownThrow = 0;
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
-	console.log(computerTimer);
 	timerComputerIncrement();
 	activeBomb = "AI";
 	inputUser = "CATCH IT";
@@ -721,8 +720,6 @@ let throwBomb = () => {
 	inputUser = "PASS IT";
 	display2.innerHTML = "PASS IT";
 }
-
-
 
 
 
