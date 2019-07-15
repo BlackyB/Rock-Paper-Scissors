@@ -647,6 +647,7 @@ let activeBomb;
 let winner;
 
 let initPotatoe = () => {
+	audio_Music.pause();
 	audio_Music_HotPotatoe.play();
 	countTimer = 0;
 	countdownThrow = 0;
