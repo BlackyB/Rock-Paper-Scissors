@@ -704,11 +704,13 @@ let timerComputerIncrement = () => {
 }
 
 let computerPassIt = () => {
+	countdownThrow = 0;
+	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
 	timerComputerIncrement();
 	activeBomb = "AI";
 	inputUser = "CATCH IT";
 	display2.innerHTML = "CATCH IT";
-	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
+	
 }
 
 let throwBomb = () => {
