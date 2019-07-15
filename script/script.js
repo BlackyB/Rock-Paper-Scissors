@@ -689,11 +689,11 @@ let countdown = () => {
 }
 
 let start = () => {
-	setInterval(countdown, 1000);
+	hotPotatoeStart = setInterval(countdown, 1000);
 }
 
 var clearStart = function() {
-	clearInterval(start);
+	clearInterval(hotPotatoeStart);
 }
 
 let timerComputer = () => {
@@ -705,11 +705,11 @@ let timerComputer = () => {
 }
 
 let timerComputerIncrement = () => {
-	setInterval(timerComputer, 1000);
+	incrementComputer = setInterval(timerComputer, 1000);
 }
 
 var clearTimerComputerIncrement = function() {
-	clearInterval(timerComputerIncrement);
+	clearInterval(incrementComputer);
 }
 
 let computerPassIt = () => {
