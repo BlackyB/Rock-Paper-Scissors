@@ -876,18 +876,23 @@ document.addEventListener("keyup", function(event) {
 	event.preventDefault();
 	if (event.keyCode === 38) {
 		up.click();
+		audio_Navigate.play();
 	}
 	if (event.keyCode === 37) {
 		left.click();
+		audio_Navigate.play();
 	}
 	if (event.keyCode === 39) {
 		right.click();
+		audio_Navigate.play();
 	}
 	if (event.keyCode === 40) {
 		down.click();
+		audio_Navigate.play();
 	}
 	if (event.keyCode === 13) {
 		buttonA.click();
+		audio_Enter.play();
 	}
 });
 
