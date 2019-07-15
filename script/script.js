@@ -805,6 +805,8 @@ let pressA = () => {
 
 		case "ROCK PAPER SCISSORS":
 		menuRPS();
+		up.addEventListener('click', moveUp3);
+		down.addEventListener('click', moveDown3);
 		getActive();
 		break;
 
@@ -826,24 +828,20 @@ let pressA = () => {
 		break;
 
 		case "ROCK":
-		up.removeEventListener('click', moveUp3);
-		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
 		case "PAPER":
-		up.removeEventListener('click', moveUp3);
-		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
 		case "SCISSORS":
-		up.removeEventListener('click', moveUp3);
-		down.removeEventListener('click', moveDown3);
 		choice();
 		break;
 
 		case "ROUND":
+		up.removeEventListener('click', moveUp3);
+		down.removeEventListener('click', moveDown3);
 		show();
 		break;
 
