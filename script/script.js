@@ -685,7 +685,7 @@ let countdown = () => {
 		displayTop.innerHTML = winner + " wins !";
 		display2.innerHTML = "BOOM";
 		clearStart();
-		title();
+		inputUser = "";
 	}
 }
 
