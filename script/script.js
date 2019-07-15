@@ -705,8 +705,8 @@ let timerComputerIncrement = () => {
 
 let computerPassIt = () => {
 	countdownThrow = 0;
-	computerTimer = 10;
-	// computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
+	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
+	console.log(computerTimer);
 	timerComputerIncrement();
 	activeBomb = "AI";
 	inputUser = "CATCH IT";
