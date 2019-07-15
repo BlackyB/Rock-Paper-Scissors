@@ -641,6 +641,8 @@ let countdownThrow;
 let computerTimer;
 let throwMin = 1;
 let throwMax = 5;
+let activeBomb;
+let winner;
 
 let initPotatoe = () => {
 	countTimer = 0;
@@ -661,6 +663,7 @@ let initPotatoe = () => {
 	display1.style.backgroundColor = "rgb(10, 10, 10)";
 	display3.style.backgroundColor = "rgb(10, 10, 10)";
 	inputUser = "PASS IT";
+	activeBomb = "PLAYER";
 	start();
 }
 
@@ -673,7 +676,17 @@ let countdown = () => {
 		displayTop.innerHTML = "00:" + countTimer;
 	}
 	if (countTimer == timer) {
+		switch(activeBomb) {
+			case "AI":
+				winner = "Player";
+				break;
+			case "PLAYER":
+				winner = "AI";
+				break;
+		}
+		display1.innerHTML = winnner + " wins !";
 		display2.innerHTML = "BOOM";
+		clearInterval(start);
 	}
 }
 
@@ -694,6 +707,7 @@ let timerComputerIncrement = () => {
 
 let computerPassIt = () => {
 	timerComputerIncrement();
+	activeBomb = "AI";
 	display2.innerHTML = "CATCH IT";
 	computerTimer = Math.floor(Math.random() * ((throwMax - throwMin) + 1) + throwMin);
 	console.log(computerTimer);
@@ -701,6 +715,7 @@ let computerPassIt = () => {
 
 let throwBomb = () => {
 	clearInterval(timerComputerIncrement);
+	activeBomb = "PLAYER";
 	computerPassIt();
 	display2.innerHTML = "PASS IT";
 }
