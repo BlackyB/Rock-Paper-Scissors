@@ -420,6 +420,8 @@ const guessNumber = () =>{
 		display3.innerHTML = target;
 		up.removeEventListener('click', moveUp421);
 		down.removeEventListener('click', moveDown421);
+		left.removeEventListener('click', moveLeftMystery);
+		right.removeEventListener('click', moveRightMystery);
 		up.addEventListener('click', moveUp3);
 		down.addEventListener('click', moveDown3);
 		inputUser = "";
@@ -438,6 +440,8 @@ const guessNumber = () =>{
 		display3.innerHTML = target;
 		up.removeEventListener('click', moveUp421);
 		down.removeEventListener('click', moveDown421);
+		left.removeEventListener('click', moveLeftMystery);
+		right.removeEventListener('click', moveRightMystery);
 		up.addEventListener('click', moveUp3);
 		down.addEventListener('click', moveDown3);
 		inputUser = "";
