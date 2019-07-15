@@ -677,13 +677,16 @@ let countdown = () => {
 	} else {
 		displayTop.innerHTML = "00:" + countTimer;
 	}
-	if (countTimer == timer) {
+	if (countTimer == timer || inputUser == "CATCH") {
 		audio_Explosion.play();
 		switch(activeBomb) {
 			case "AI":
 				winner = "Player";
 				break;
 			case "PLAYER":
+				winner = "AI";
+				break;
+			case "SOON":
 				winner = "AI";
 				break;
 		}
@@ -825,6 +828,10 @@ let pressA = () => {
 
 		case "PASS IT":
 		computerPassIt();
+		break;
+
+		case "CATCH IT":
+		countdown();
 		break;
 
 		case "GUESS":
