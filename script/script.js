@@ -903,8 +903,10 @@ let pressSelect = () =>{
 }
 
 let pressStart = () =>{
-	clean();
 	home();
+	clearTimerComputerIncrement();
+	clearStart();
+	clean();
 	displayCenter.classList.remove('row');
 	displayCenter.classList.add('col');
 	inputUser = '';
@@ -912,6 +914,8 @@ let pressStart = () =>{
 	audio_Battle.currentTime = 0;
 	audio_musicMystery.pause();
 	audio_musicMystery.currentTime = 0;
+	audio_Music_HotPotatoe.pause();
+	audio_Music_HotPotatoe.currentTime = 0;
 	audio_Music.play();
 	up.removeEventListener('click', moveUp421);
 	down.removeEventListener('click', moveDown421);
@@ -919,6 +923,7 @@ let pressStart = () =>{
 	down.addEventListener('click', moveDown3);
 
 }
+
 /* Buttons press and release animations */
 
 var push = function() {
